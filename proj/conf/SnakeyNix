@@ -1,0 +1,37 @@
+service SnakeyNix
+{
+	system
+		UMAP
+		INT86
+		IOPENABLE
+		PRIVCTL
+		READBIOS
+		DEVIO
+		IRQCTL
+		;
+	ipc
+		SYSTEM
+		rs
+		vm
+		pm
+		vfs
+		;
+	io
+		40:4	# TIMER
+		60	# KBD
+		64	# KBD
+		70:2	# RTC
+		2f8:8	# UART COM2
+		3f8:8   # UART COM1
+		;
+	irq
+		0	# TIMER 0 IRQ
+		1	# KBD IRQ
+                3       # UART COM2 IRQ
+                4       # UART COM1 IRQ
+                8       # RTC IRQ
+		12	# AUX/MOUSE IRQ
+		;
+	uid	0
+		;
+};
